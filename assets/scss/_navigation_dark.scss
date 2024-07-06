@@ -12,6 +12,7 @@
       &:hover,
       &:focus {
         color: $link-color-dark;
+        text-shadow: $link-color-dark-shadow;
       }
     }
 
