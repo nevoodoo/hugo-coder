@@ -2,7 +2,9 @@
   <section class="container">
     {{ with .Site }}
     <a class="navigation-title" href="{{ absLangURL "" }}">
-      {{ .Title }}
+      <span class="glitch" data-text="{{ .Title }}">{{ .Title }}</span>
+      <span class="glow">{{ .Title }}</span>
+      <span class="scanlines"></span>
     </a>
     {{ end }}
     {{ if or .Site.Menus.main hugo.IsMultilingual }}
