@@ -127,14 +127,6 @@
       }
     }
 
-    .glow {
-      @extend .glitch !optional;
-      text-shadow: 0 0 1000px rgb(223, 191, 191);
-      color: transparent;
-      position: absolute;
-      top: 0;
-    }
-
     #menu-toggle {
       @media only screen and (max-width: 768px) {
         &:checked + label > i {
