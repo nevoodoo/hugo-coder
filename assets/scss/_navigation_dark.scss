@@ -10,6 +10,7 @@
       color: $fg-color-dark;
       text-shadow: $fg-color-dark-shadow;
       font-family: $nav-font-family;
+      text-decoration: none;
     }
 
     a {
@@ -35,7 +36,7 @@
     }
 
     .navigation-title {
-      font-size: 8rem;
+      font-size: 3rem;
       text-transform: uppercase;
       position: relative;
 
