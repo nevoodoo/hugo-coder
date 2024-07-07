@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Retro';
+  src: local('Retro'), url(/fonts/Retro.ttf) format('truetype');
+}
+
 @mixin navigation_dark {
   .navigation {
 
