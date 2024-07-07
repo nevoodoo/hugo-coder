@@ -35,82 +35,104 @@
       }
     }
 
-    .navigation-title {
-      font-size: 3rem;
+    .glitch {
       position: relative;
-      margin: 0 auto;
-    }
-    @keyframes noise-anim {
-      $steps: 20;
-      @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
-        }
-      }
-    }
-    .navigation-title:after {
-      content: attr(data-text);
-      position: absolute;
-      left: 3px;
-      font-size: 3rem;
-      text-shadow: $link-color-dark-shadow;
-      top: 0;
-      clip: rect(0, 900px, 0, 0);
-      animation: noise-anim 9s infinite linear alternate-reverse;
+      font-size: rem;
+      // margin: 70px 200px;
+      animation: glitch 5s 5s infinite;
     }
 
-    @keyframes noise-anim-2 {
-      $steps: 20;
-      @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
-        }
-      }
-    }
-    .navigation-title:before {
+    .glitch::before {
       content: attr(data-text);
       position: absolute;
       left: -2px;
-      text-shadow: 1px 0 blue;
+      text-shadow: 1px 1px #1af921;
+      overflow: hidden;
       top: 0;
-      clip: rect(0, 200px, 0, 0);
-      animation: noise-anim-2 10s infinite linear alternate-reverse;
+      animation: noise-1 3s linear infinite alternate-reverse,
+        glitch 5s 5.05s infinite;
     }
 
-    @keyframes noise-anim {
-      $steps: 19;
-      @for $i from 0 through $steps {
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: $link-color-dark-shadow;
+      overflow: hidden;
+      top: 0;
+      animation: noise-2 3s linear infinite alternate-reverse,
+        glitch 5s 5s infinite;
+    }
+
+    @keyframes glitch {
+      1% {
+        transform: rotateX(10deg) skewX(90deg);
+      }
+      2% {
+        transform: rotateX(0deg) skewX(0deg);
+      }
+    }
+
+    @keyframes noise-1 {
+      $steps: 30;
+      @for $i from 1 through $steps {
         #{percentage($i*(1/$steps))} {
-          clip: rect(random(101) + px, 9999px, random(100) + px, 0);
+          $top: random(100);
+          $bottom: random(101 - $top);
+          clip-path: inset(#{$top}px 0 #{$bottom}px 0);
         }
       }
     }
 
-    @keyframes noise-anim-2 {
-      $steps: 21;
+    @keyframes noise-2 {
+      $steps: 30;
       @for $i from 0 through $steps {
         #{percentage($i*(1/$steps))} {
-          clip: rect(random(104) + px, 9999px, random(100) + px, 0);
+          $top: random(100);
+          $bottom: random(101 - $top);
+          clip-path: inset(#{$top}px 0 #{$bottom}px 0);
         }
       }
     }
 
-    @keyframes noise-anim {
-      $steps: 20;
-      @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
-        }
+    .scanlines {
+      overflow: hidden;
+      mix-blend-mode: difference;
+    }
+
+    .scanlines::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+
+      background: repeating-linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.05) 0.5%,
+        transparent 1%
+      );
+
+      animation: fudge 7s ease-in-out alternate infinite;
+    }
+
+    @keyframes fudge {
+      from {
+        transform: translate(0px, 0px);
+      }
+      to {
+        transform: translate(0px, 2%);
       }
     }
 
-    @keyframes noise-anim-2 {
-      $steps: 20;
-      @for $i from 0 through $steps {
-        #{percentage($i*(1/$steps))} {
-          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
-        }
-      }
+    .glow {
+      @extend .glitch;
+      text-shadow: 0 0 1000px rgb(223, 191, 191);
+      color: transparent;
+      position: absolute;
+      top: 0;
     }
 
     #menu-toggle {
